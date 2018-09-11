@@ -1,3 +1,6 @@
+/**
+ * Created by walkermellema on 7/26/18.
+ */
 
 /**
  * Created by walkermellema on 11/13/17.
@@ -23,6 +26,15 @@ var contents = fs.readFileSync('FloodResponse.txt', 'utf8');
 var floodJSON = JSON.parse(contents);
 var floodUUID = floodJSON.uuid;
 var permalink = floodJSON.permalink;
+
+var decompress = require('decompress');
+var shell = require('shelljs');
+var path = require('path');
+
+
+var filter = function(file){
+	return path.extname(file.path) === '.csv';
+};
 
 var agent = client.agent();
 agent.get(floodLogin)
@@ -93,7 +105,7 @@ var checkUUID = function(){
 				}
 				if (res.body.status === 'finished') {
 					counter++;
-					if(counter === 1) {
+					if(counter > 0) {
 						clearInterval(interval);
 						client.get(url + '/floods/' + floodUUID + '/report')
 							.auth(process.env.FLOOD)
@@ -108,6 +120,40 @@ var checkUUID = function(){
 									console.log('Mean Response Time:', res.body.mean_response_time, 'ms');
 									console.log('Mean Error Rate:', res.body.mean_error_rate, 'requests / min');
 									console.log('FLOOD:', floodJSON);
+									console.log('END REPORT******************************************************** END REPORT');
+
+								}
+							});
+					}
+					if(counter > 1) {
+						client.get(url + '/floods/' + floodUUID)
+							.auth(process.env.FLOOD)
+							.end(function (err, res) {
+								if (err) {
+									console.log(err);
+								}
+								else {
+									var text = JSON.parse(res.text);
+									var s3url = text._embedded.archives[0].href;
+									var fileName = s3url.split('/');
+									fileName = fileName[3];
+									client.get(s3url)
+										.on('error', function (error) {
+											console.log(error);
+										})
+										.pipe(fs.createWriteStream(fileName))
+										.on('finish', function () {
+											decompress(fileName, 'dist', {
+												filter: filter
+											}).then(
+												function theShell() {
+													shell.exec('cp ./dist/data/flood/files/floodLog.csv ./floodLog.csv');
+													shell.exec('./apache-jmeter-3.3/bin/jmeter -v');
+													shell.exec('./apache-jmeter-3.3/bin/jmeter -g ./floodLog.csv -o reports');
+													clearInterval(interval);
+												}
+											);
+										});
 								}
 							});
 					}
