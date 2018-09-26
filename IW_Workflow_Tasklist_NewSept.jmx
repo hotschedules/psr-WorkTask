@@ -2819,7 +2819,7 @@ void PostMeasurement(String Metric) {
 </stringProp>
         </JSR223Listener>
         <hashTree/>
-        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Grafana Threads Listener" enabled="false">
+        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Grafana Threads Listener" enabled="true">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -2911,7 +2911,7 @@ void PostMeasurement(String Metric) {
 </stringProp>
         </JSR223Listener>
         <hashTree/>
-        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Grafana Metrics Listener" enabled="false">
+        <JSR223Listener guiclass="TestBeanGUI" testclass="JSR223Listener" testname="Grafana Metrics Listener" enabled="true">
           <stringProp name="cacheKey">true</stringProp>
           <stringProp name="filename"></stringProp>
           <stringProp name="parameters"></stringProp>
