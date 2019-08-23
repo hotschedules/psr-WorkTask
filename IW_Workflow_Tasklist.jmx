@@ -89,12 +89,12 @@
           </elementProp>
           <elementProp name="DeleteData" elementType="Argument">
             <stringProp name="Argument.name">DeleteData</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">0</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="CreateData" elementType="Argument">
             <stringProp name="Argument.name">CreateData</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">0</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="FullTest" elementType="Argument">
@@ -2407,6 +2407,7 @@ props.put(&quot;store_Name&quot;,tmps);
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${duration}</stringProp>
         <stringProp name="ThreadGroup.delay">300</stringProp>
+        <stringProp name="TestPlan.comments">300 seconds startup delay</stringProp>
       </ThreadGroup>
       <hashTree>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
