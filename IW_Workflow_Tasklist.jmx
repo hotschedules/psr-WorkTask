@@ -2461,7 +2461,8 @@ props.put(&quot;store_Name&quot;,tmps);
           <stringProp name="cacheKey">6b3b1302-3ea3-40fb-af7d-6f01ae20aaf5</stringProp>
           <stringProp name="script">var value = Math.floor(Math.random() * Math.floor(50));
 value = value+1;
-vars.put(&quot;randTimer&quot;,value);</stringProp>
+vars.put(&quot;randTimer&quot;,value);
+vars.put(&quot;yesterday&quot;,&quot;A&quot;);</stringProp>
         </JSR223Sampler>
         <hashTree/>
         <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Generate UUID" enabled="true">
