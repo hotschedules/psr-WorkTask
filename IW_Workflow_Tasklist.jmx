@@ -14,7 +14,7 @@
           </elementProp>
           <elementProp name="ramp_up_time" elementType="Argument">
             <stringProp name="Argument.name">ramp_up_time</stringProp>
-            <stringProp name="Argument.value">${__P(rampup, 1)}</stringProp>
+            <stringProp name="Argument.value">${__P(rampup, 3000)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="duration" elementType="Argument">
