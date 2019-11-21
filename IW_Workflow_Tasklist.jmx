@@ -2516,7 +2516,7 @@ if (vars.get(&quot;UseThroughputRampUp&quot;).equals(&quot;Y&quot;)) {
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">177</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__jexl3(${num_users}/2,)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${ramp_up_time}</stringProp>
         <longProp name="ThreadGroup.start_time">1556786044000</longProp>
         <longProp name="ThreadGroup.end_time">1556786044000</longProp>
@@ -5407,7 +5407,7 @@ vars.put(&quot;taskValue&quot;,&quot;yes&quot;);</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">177</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__jexl3(${num_users}/2,)}</stringProp>
         <stringProp name="ThreadGroup.ramp_time">${ramp_up_time}</stringProp>
         <longProp name="ThreadGroup.start_time">1556786044000</longProp>
         <longProp name="ThreadGroup.end_time">1556786044000</longProp>
