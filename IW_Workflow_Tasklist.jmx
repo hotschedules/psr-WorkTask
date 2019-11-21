@@ -2,7 +2,7 @@
 <jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
-      <stringProp name="TestPlan.comments">C:\data\flood\files</stringProp>
+      <stringProp name="TestPlan.comments">C:\data\flood\files    : ${__time(yyyy-MM-dd)}</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
@@ -14,17 +14,17 @@
           </elementProp>
           <elementProp name="num_users" elementType="Argument">
             <stringProp name="Argument.name">num_users</stringProp>
-            <stringProp name="Argument.value">${__P(threads,600)}</stringProp>
+            <stringProp name="Argument.value">${__P(threads,100)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ramp_up_time" elementType="Argument">
             <stringProp name="Argument.name">ramp_up_time</stringProp>
-            <stringProp name="Argument.value">${__P(rampup, 600)}</stringProp>
+            <stringProp name="Argument.value">${__P(rampup,300)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="duration" elementType="Argument">
             <stringProp name="Argument.name">duration</stringProp>
-            <stringProp name="Argument.value">${__P(duration, 600)}</stringProp>
+            <stringProp name="Argument.value">${__P(duration,300)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="env" elementType="Argument">
@@ -2522,10 +2522,16 @@ if (vars.get(&quot;UseThroughputRampUp&quot;).equals(&quot;Y&quot;)) {
         <longProp name="ThreadGroup.end_time">1556786044000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">120</stringProp>
+        <stringProp name="ThreadGroup.delay">1</stringProp>
         <stringProp name="TestPlan.comments">300 seconds startup delay; 177 users</stringProp>
       </ThreadGroup>
       <hashTree>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
         <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
@@ -3171,6 +3177,11 @@ log.info(&quot;yesterday : &quot; + vars.get(&quot;yesterday&quot;));
                 <stringProp name="Argument.value">noise.bodhi-stg.io</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
+              <elementProp name="Time" elementType="Argument">
+                <stringProp name="Argument.name">Time</stringProp>
+                <stringProp name="Argument.value">${__time(yyyy-MM-dd)}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
             </collectionProp>
           </Arguments>
           <hashTree/>
@@ -3706,12 +3717,6 @@ log.info(&quot;yesterday : &quot; + vars.get(&quot;yesterday&quot;));
               </JSONPostProcessor>
               <hashTree/>
             </hashTree>
-            <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="false">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugSampler>
-            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET insights" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -5413,7 +5418,7 @@ vars.put(&quot;taskValue&quot;,&quot;yes&quot;);</stringProp>
         <longProp name="ThreadGroup.end_time">1556786044000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.duration">${duration}</stringProp>
-        <stringProp name="ThreadGroup.delay">60</stringProp>
+        <stringProp name="ThreadGroup.delay">1</stringProp>
         <stringProp name="TestPlan.comments">177</stringProp>
       </ThreadGroup>
       <hashTree>
